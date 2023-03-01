@@ -1063,7 +1063,7 @@ class RadarCollectionType(Serializable):
             # type: (int, WaveformParametersType) -> bool
             this_cond = True
             try:
-                if abs(waveform.TxRFBandwidth/(waveform.TxPulseLength*waveform.TxFMRate) - 1) > 1e-3:
+                if abs(waveform.TxRFBandwidth/(waveform.TxPulseLength*abs(waveform.TxFMRate)) - 1) > 1e-3:
                     self.log_validity_error(
                         'The TxRFBandwidth, TxPulseLength, and TxFMRate parameters of Waveform '
                         'entry {} are inconsistent'.format(index+1))
